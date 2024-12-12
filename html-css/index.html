@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piano Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="../img/android-chrome-512x512.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+      <header>
+        <div class="titulo">
+          <h1>Piano Store</h1>
+          <p>
+            Somos amantes de musicas e todos temos nossos pianos dos
+            sonhos. <br> <strong> Qual é o seu ? </strong>
+          </p>
+        </div>
+        <img src="../img/teste-removebg-preview (1).png" alt="Piano Branco" />
+      </header>
+
+    <main>
+      <div class="corpo_do_iput">
+        <div class="frase_de_efeito">
+          <div class="Titulo_do_input">
+            <h2>Preencha ao lado com seus pianos</h2>
+          </div>
+          <div class="texto_de_mozart">
+            <h3>Como dizia mozart</h3>
+            <p>
+              "Para fazer uma obra de arte não basta ter talento, não basta ter
+              força, é preciso também viver um grande amor"
+            </p>
+          </div>
+        </div>
+        <div class="formulario">
+          <form class="row g-3" id="formulario">
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">E-mail</label>
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail4"
+                placeholder="Digite seu e-mail"
+                pattern="[a-zA-Z0-9._%+-]+@gmail\.com"
+                required
+              />
+              <small
+                id="emailError"
+                class="form-text text-danger"
+                style="display: none"
+                >Por favor, insira um e-mail válido no formato @gmail.com</small
+              >
+            </div>
+            <div class="col-md-6">
+              <label for="inputNome" class="form-label">Nome completo</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputNome"
+                placeholder="Digite seu nome completo"
+                required
+              />
+              <small
+                id="nomeError"
+                class="form-text text-danger"
+                style="display: none"
+                >O nome não pode conter números.</small
+              >
+            </div>
+
+            <div class="col-md-6">
+              <label for="inputTipo" class="form-label">Tipo do piano</label>
+              <select id="inputTipo" class="form-select" required>
+                <option value="" selected disabled>
+                  Selecione o tipo de piano
+                </option>
+                <option>Piano de Cauda</option>
+                <option>Vertical</option>
+                <option>Piano Digital</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="inputMarca" class="form-label">Marca do piano</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputMarca"
+                placeholder="Qual é a marca do seu piano dos sonhos"
+                required
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label for="inputTeclas" class="form-label">Teclas</label>
+              <input
+                type="number"
+                class="form-control"
+                id="inputTeclas"
+                min="25"
+                max="88"
+                placeholder="De 25 a 88 teclas"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="inputValor" class="form-label">Preço</label>
+              <input
+                type="number"
+                class="form-control"
+                id="inputValor"
+                step="0.01"
+                min="0.01"
+                placeholder="Digite o preço"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="inputCor" class="form-label">Cor</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputCor"
+                placeholder="Ex: Preto, Branco"
+                required
+              />
+              <small
+                id="corError"
+                class="form-text text-danger"
+                style="display: none"
+                >A cor não pode conter números.</small
+              >
+            </div>
+
+            <div class="col-12">
+              <button
+                type="button"
+                class="btn btn-primary w-100"
+                id="btnCadastrar"
+              >
+                Cadastrar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Campo de busca -->
+      <div class="container mt-5">
+        <div class="tebela_de_busca">
+          <h2>Tabela de Pianos Cadastrados</h2>
+          <input
+            type="text"
+            id="campoBusca"
+            class="form-control mb-3 busca"
+            placeholder="Buscar"
+            oninput="filtrarPianos()"
+          />
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Tipo e Marca</th>
+                <th>Valor</th>
+                <th>Teclas</th>
+                <th>Cor</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaPianos">
+              <!-- A tabela começa vazia e será preenchida dinamicamente -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+
+    <footer>
+      <h2> produzido por matheus</h2>
+    </footer>
+
+    <script src="../validação.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>
